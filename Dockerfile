@@ -10,6 +10,10 @@ RUN a2enmod  rewrite
 RUN wget https://raw.githubusercontent.com/uncleluogithub/areyouok/main/000-default.conf
 RUN rm /etc/apache2/sites-available/000-default.conf
 RUN mv 000-default.conf /etc/apache2/sites-available
+RUN apt-get update --fix-missing
+RUN apt-get install -y \
+    curl \
+    gcc
 RUN echo 'You can play the awesome Cloud NOW! - Message from Uncle LUO!' >/var/www/html/index.html
 RUN echo 'wstunnel -s 0.0.0.0:8989 & ' >>/luo.sh
 RUN echo 'service mysql restart' >>/luo.sh
